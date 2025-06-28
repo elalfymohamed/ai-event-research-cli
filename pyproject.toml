@@ -1,0 +1,12 @@
+[project]
+name="smart-event-search"
+version="1.0.0"
+description=""
+readme="README.md"
+requires-python=">=3.13"
+dependencies=[
+        "langchain-google-genai>=2.1.5",
+        "langgraph>=0.5.0",
+        "docopt>=0.6.2",
+        "python-dotenv>=1.1.1"
+]
