@@ -17,11 +17,11 @@ def output_excel(input: dict, output:  dict[str, Any]) -> None:
 
     topic = input.get("topic", "events").replace(" ", "_").lower()
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    file_path = path_dir / f"{topic}_output_{timestamp}.csv"
+    file_path = path_dir / f"{topic}_output_{timestamp}.xlsx"
 
     try:
         df = pd.DataFrame(output)
-        df.to_csv(file_path, index=False)
+        df.to_excel(file_path, index=False)
         logger.info(f"✅ Output written to: {file_path}")
     except Exception as e:
         logger.error(f"❌ Failed to write output file: {e}")
