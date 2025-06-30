@@ -194,7 +194,7 @@ cython_debug/
 .cursorindexingignore
 
 # key file
-google_key
+key
 
 
 # folder
