@@ -11,15 +11,7 @@ from config import setup_logger
 logger = setup_logger()
 
 def load_google_api_key() -> str:
-    """
-    Load the Google API key from the .env file or fallback to the google_key file.
-
-    Returns:
-        str: The Google API key.
-
-    Raises:
-        ValueError: If the key is not found or invalid.
-    """
+    """ Load the Google API key from the .env file or fallback to the google_key file """
     env_path = Path(__file__).resolve().parent.parent.parent / ".env"
 
     load_dotenv(env_path)
