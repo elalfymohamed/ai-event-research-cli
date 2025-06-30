@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 # Local imports
-from utilities import is_valid_google_key_format
+from utilities import is_valid_firecrawl_key_format
 from constants.keys import FILE_KEY_NAME
 from config import setup_logger
 
@@ -35,15 +35,7 @@ class KeyStorage:
         return os.path.exists(self.path_file)
 
     def get_value_key(self) -> str:
-        """
-        Retrieve and validate the stored key.
-
-        Returns:
-            The key string if valid.
-
-        Raises:
-            ValueError: If the file is missing, empty, or the key is invalid.
-        """
+        """ Retrieve and validate the stored key """
         if not self._is_file_exists():
             raise ValueError(
                 f"❌ The key file '{self.file_name}' does not exist.\n"
@@ -57,10 +49,10 @@ class KeyStorage:
                 if not content:
                     raise ValueError("⚠️ The key file is empty.")
 
-                if not is_valid_google_key_format(content):
+                if not is_valid_firecrawl_key_format(content):
                     raise ValueError("❗ The key format is invalid.")
 
-                logger.info("✅ Google API key loaded from file successfully.")
+                logger.info("✅ API key loaded from file successfully.")
                 return content
 
         except Exception as e:
