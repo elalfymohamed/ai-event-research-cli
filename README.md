@@ -62,6 +62,13 @@ ollama run llama3
 
 Next, install all the necessary Python packages using pip:
 ```bash
+python3 -m venv .venv
+
+#Linux / macOS:
+source .venv/bin/activate
+#Windows:
+.venv/Scripts/activate
+
 pip install -r requirements.txt
 ```
 
@@ -72,13 +79,35 @@ You can run the CLI tool from your terminal.
 
 #For Linux / macOS:
 
-python main.py --city=cairo --topic=ai
+python main.py --city=cairo --topic=software
 
 #For Windows:
 
-py main.py --city=cairo --topic=ai
+py main.py --city=cairo --topic=software
 
 ```
+
+## 🏃‍♂️ Run via Bash Script
+
+You can run the tool with:
+
+```bash
+chmod +x run_project.sh
+
+./run_project.sh cairo software your_firecrawl_api_key
+
+```
+
+### 🔐 Using Environment Variables
+
+To avoid passing your API key on the command line, create a `.env` file in the project root:
+
+```bash
+# .env
+FIRECRAWL_API_KEY=your_api_key_here
+```
+The application will automatically load the key if not explicitly provided via --key.
+
 
 ## ⚙️ CLI Usage
 
@@ -90,14 +119,14 @@ main.py --city=<city> --topic=<topic> [--key=<API_KEY>]
 Options:
 
     --city=<city>: Required. Specify the target city to search for events in.
-
+        Default: cairo
         Example: --city=cairo
 
-    --topic=<topic>: Required. Define the target event topic (e.g., AI, Fintech, Cybersecurity).
+    --topic=<topic>: Required. Define the target event topic (e.g., AI, Software, Cybersecurity).
 
-        Example: --topic=ai
+        Example: --topic=software
 
-    --key=<API_KEY>: Optional. Provide your API key for Firecrawl. If not provided, the tool will attempt to use a pre-configured key or prompt for one if necessary.
+    --key=<API_KEY>: Optional. Provide your API key for Firecrawl. If not provided, the tool will attempt to use a key in .env file.
 
         Example: --key=your_firecrawl_api_key_here
 ```
