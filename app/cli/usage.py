@@ -6,10 +6,10 @@ Usage:
   main.py -h | --help
 
 Options:
-  --city=<city>        Optional city name [default: cairo]. You can specify multiple cities separated by commas.
+  --city=<city>      Optional city name [default: cairo]. You can specify multiple cities separated by commas.
   --topic=<topic>    Required topic names (e.g., software, market, etc.).
-  --key=<key>          Optional Firecrawl API key for Firecrawl LLM access.
-  -h --help            Show this help message.
+  --key=<key>        Optional Firecrawl API key for Firecrawl LLM access.
+  -h --help          Show this help message.
 
 Description:
   ┌────────────────────────────────────────────────────────────────────────────┐
