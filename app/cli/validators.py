@@ -1,5 +1,5 @@
 # Local imports
-from utilities import is_valid_google_key_format
+from utilities import is_valid_firecrawl_key_format
 
 class ValidationError(Exception):
     pass
@@ -23,5 +23,5 @@ def validate_required_args(args: dict) -> None:
         raise ValidationError("❌  --city must be comma-separated values with no spaces.")
 
     # Validate --key
-    if key and not is_valid_google_key_format(key):
-        raise ValidationError("❌ Invalid Google API key format.")
+    if key and not is_valid_firecrawl_key_format(key):
+        raise ValidationError("❌ Invalid Firecrawl API key format.")
