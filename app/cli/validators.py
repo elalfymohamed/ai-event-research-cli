@@ -10,12 +10,12 @@ def validate_required_args(args: dict) -> None:
     Validates parsed arguments from docopt.
     Exits the program with an error message if validation fails.
     """
-    topics = args.get("--topics")
+    topic = args.get("--topic")
     city = args.get("--city")
     key = args.get("--key")
 
-    # Validate --topics
-    if not topics:
+    # Validate --topic
+    if not topic:
         raise ValidationError("❌ --topics is required.")
 
     # Validate --city
