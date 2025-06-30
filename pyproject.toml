@@ -3,7 +3,7 @@ name = "ai-event-research-cli"
 version = "1.0.0"
 description = "This CLI tool uses a local LLM model with LangGraph, LangChain, and Firecrawl to search, analyze, and extract structured information about upcoming events based on location and topic."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.13"
 dependencies = [
     "langchain_core>=2.1.5",
     "langchain-ollama>=0.1.0",
