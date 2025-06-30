@@ -21,7 +21,7 @@ Description:
   │ then generates an Excel file to organize the collected data.               │
   │                                                                            │
   │ 🔧 Example command:                                                        │
-  │     main.py --city=cairo --topics=software --key=your-firecrawl-api-key    │
+  │     main.py --city=cairo --topic=software --key=your-firecrawl-api-key    │
   │                                                                            │
   │ 🔑 How to Get a Firecrawl API Key:                                         │
   │   1. Visit: https://www.firecrawl.dev/app                                  │
