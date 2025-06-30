@@ -12,7 +12,6 @@ def validate_required_args(args: dict) -> None:
     """
     topics = args.get("--topics")
     city = args.get("--city")
-    country = args.get("--country")
     key = args.get("--key")
 
     # Validate --topics
@@ -22,10 +21,6 @@ def validate_required_args(args: dict) -> None:
     # Validate --city
     if not city:
         raise ValidationError("❌  --city must be comma-separated values with no spaces.")
-
-    # Validate --country (single word only)
-    if country and (',' in country or ' ' in country.strip()):
-        raise ValidationError("❌ --country must be a single word (no commas or spaces).")
 
     # Validate --key
     if key and not is_valid_google_key_format(key):
