@@ -12,6 +12,7 @@ def validate_required_args(args: dict) -> None:
     """
     topic = args.get("--topic")
     city = args.get("--city")
+    months = args.get("--months")
     key = args.get("--key")
 
     # Validate --topic
@@ -21,6 +22,15 @@ def validate_required_args(args: dict) -> None:
     # Validate --city
     if not city:
         raise ValidationError("❌  --city must be comma-separated values with no spaces.")
+    
+    # Validate --months
+    try:
+        months = int(months)
+    except (TypeError, ValueError):
+        raise ValidationError("❌ --months must be an integer between 1 and 4.")
+    
+    if int(months) < 1 or int(months) > 4:
+        raise ValidationError("❌ --months must be between 1 and 4 for get best .")
 
     # Validate --key
     if key and not is_valid_firecrawl_key_format(key):
