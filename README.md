@@ -94,7 +94,7 @@ You can run the tool with:
 ```bash
 chmod +x run_project.sh
 
-                # city, topic, months, key
+# Usage: ./run_project.sh <city> <topic> <months> [api_key]
 ./run_project.sh cairo software 2 your_firecrawl_api_key
 
 ```
@@ -115,11 +115,11 @@ The application will automatically load the key if not explicitly provided via -
 The main.py script accepts several command-line arguments to customize your event search.
 
 ```bash
-main.py --city=<city> --topic=<topic> [--key=<API_KEY>]
+main.py [--city=<city>] --topic=<topic> [--months=<months>] [--key=<API_KEY>]
 
 Options:
 
-    --city=<city>: Required. Specify the target city to search for events in.
+    --city=<city>: Optional. You can specify multiple cities separated by commas.
         Default: cairo
         Example: --city=cairo
 
