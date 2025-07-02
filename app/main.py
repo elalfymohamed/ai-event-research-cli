@@ -19,13 +19,14 @@ def main():
 
         topic = args.get("--topic")
         city = args.get("--city")
+        months = args.get("--months")
         api_key = args.get("--key")
 
         if api_key:
             KeyStorage(api_key)
 
         logger.info("🚀 Starting research agent")
-        agent = ResearchAgent()
+        agent = ResearchAgent(months=months)
         agent.run_research(topic=topic, city=city)
 
         print("🎯 Final Output")
@@ -39,8 +40,8 @@ def main():
 if __name__ == '__main__':
     """
     How to run:
-        Mac/Linux -> python main.py --city=cairo --topic=software
-        Windows   -> py main.py --city=cairo --topic=software
+        Mac/Linux -> python main.py --city=cairo --topic=software --months=2
+        Windows   -> py main.py --city=cairo --topic=software --months=2
 
     To get help, run:
         Mac/Linux -> python main.py -h
