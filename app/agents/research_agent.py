@@ -23,12 +23,14 @@ class ResearchAgent:
     Agent for conducting topics-based research using AI.
     """
 
-    def __init__(self):
+    def __init__(self, months: int = 1):
         self.config = AgentConfig()
         self.firecrawl = FirecrawlService()
         self.prompts = ResearchPromo()
         self._initialize_llm()
         self.graph = self._build_graph()
+        self.months = months
+
 
 
     def _initialize_llm(self) -> None:
@@ -64,10 +66,12 @@ class ResearchAgent:
 
             date_now = datetime.now()
             start_date = date_now.strftime("%Y-%m-%d")
-            end_date = (date_now + relativedelta(months=1)).strftime("%Y-%m-%d")
+            end_date = (date_now + relativedelta(months=self.months)).strftime("%Y-%m-%d")
 
             logger.info("🛠 Creating query prompt...")
             query = f"List upcoming {topics} events in {city} between {start_date} and {end_date}. Include name, description, location, date, and link."
+            
+            logger.info(f"🛠 Creating query for date range {start_date} to {end_date}")
 
             logger.info("🔎 Querying Firecrawl search...")
             search_results = self.firecrawl.search_events(query=query, city=city)
