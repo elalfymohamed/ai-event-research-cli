@@ -8,13 +8,13 @@ Usage:
 Options:
   --city=<city>      Optional city name [default: cairo]. You can specify multiple cities separated by commas.
   --topic=<topic>    Required topic name(s) (e.g., software, market).
-  --months=<months>  Optional number of months to search [default: 1] (e.g., 1 to 4). Minimum is 1 month, maximum is 4 months.
-  --key=<key>        Optional Firecrawl API key for Firecrawl LLM access.
+  --months=<months>: Optional [default: 1]. Number of months to search for events starting from today. Minimum is 1, maximum is 4.
+  --key=<key>        Optional  Firecrawl API key for web data extraction.
   -h --help          Show this help message.
 
 Description:
   ┌────────────────────────────────────────────────────────────────────────────┐
-  │ 💬 This project utilizes ✨ Ollama AI ✨ and ✨ Firecrawl LLM ✨ to        │
+  │ 💬 This project utilizes ✨ Ollama AI ✨ and ✨ Firecrawl ✨ to        │
   │ intelligently retrieve, summarize, and structure event information based   │
   │ on specific cities and given topics.                                       │
   │                                                                            │
