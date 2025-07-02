@@ -12,4 +12,5 @@ dependencies = [
     "docopt>=0.6.2",
     "python-dotenv>=1.1.1",
     "pandas[excel]>=2.3.0",
+    "pytest>=8.4.1",
 ]
