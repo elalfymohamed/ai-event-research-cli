@@ -8,12 +8,13 @@ set -e
 
 CITY=${1:-cairo}
 TOPIC=${2:-software}
-API_KEY=${3:-""}  # Optional
-
+MONTHS=${3:-1}
+API_KEY=${4:-""}  # Optional
 
 echo "🚀 Running AI Event Research CLI"
 echo "📍 City: $CITY"
 echo "📌 Topic: $TOPIC"
+echo "🗓️ Months: $MONTHS"
 if [ -n "$API_KEY" ]; then
     echo "🔑 Using provided API Key"
 fi
@@ -28,12 +29,12 @@ fi
 
 PYTHON_VERSION=$($PYTHON_CMD --version 2>&1)
 
-VERSION_NUM=$(echo "$PYTHON_VERSION" | grep -oP '(?<=Python )\d+\.\d+')
+VERSION_NUM=$(echo "$PYTHON_VERSION" | sed -n 's/^Python \([0-9][0-9]*\.[0-9][0-9]*\).*/\1/p')
 
 MAJOR=$(echo  "$VERSION_NUM" | cut -d '.' -f 1)
 MINOR=$(echo  "$VERSION_NUM" | cut -d '.' -f 2)
 
-if [["$MAJOR" -lt 3]] || [["$MINOR" -eq 3]] && [["$MINOR" -lt 12]]; then
+if [[ "$MAJOR" -lt 3 ]] || ([[ "$MINOR" -eq 3 ]] && [[ "$MINOR" -lt 12 ]]); then
     echo "❌ Python 3.12 or higher is required. You have Python $VERSION_NUM"
     exit 1
 else
@@ -70,9 +71,9 @@ cd ./app || { echo "❌ 'app' directory not found!"; exit 1; }
 
 
 if [ -n "$API_KEY" ]; then
-    $PYTHON_CMD main.py --city="$CITY" --topic="$TOPIC" --key="$API_KEY"
+    $PYTHON_CMD main.py --city="$CITY" --topic="$TOPIC" --months="$MONTHS" --key="$API_KEY"
 else
-    $PYTHON_CMD main.py --city="$CITY" --topic="$TOPIC"
+    $PYTHON_CMD main.py --city="$CITY" --topic="$TOPIC" --months="$MONTHS"
 fi
 
 echo "✅ Done! Check the generated Excel file."
