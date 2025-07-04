@@ -1,6 +1,7 @@
 # Standard library
 import os
 from pathlib import Path
+import sys
 
 # Local imports
 from utilities import is_valid_firecrawl_key_format
@@ -28,6 +29,7 @@ class KeyStorage:
             os.chmod(self.path_file, 0o600)
             logger.info("✅ The key file was created successfully.")
         except Exception as e:
+            logger.error(f"Failed to write key to file '{self.file_name}': {e}")
             raise ValueError(f"Failed to write key to file '{self.file_name}': {e}")
 
     def _is_file_exists(self) -> bool:
@@ -37,10 +39,11 @@ class KeyStorage:
     def get_value_key(self) -> str:
         """ Retrieve and validate the stored key """
         if not self._is_file_exists():
-            raise ValueError(
+            logger.error(
                 f"❌ The key file '{self.file_name}' does not exist.\n"
                 "🔐 You can add the key in a `.env` file or provide it using the `--key` flag when running the command."
             )
+            sys.exit(1)
 
         try:
             with open(self.path_file, "r") as f:
@@ -56,4 +59,5 @@ class KeyStorage:
                 return content
 
         except Exception as e:
+            logger.error(f"🚫 Failed to read key from file '{self.file_name}': {e}")
             raise ValueError(f"🚫 Failed to read key from file '{self.file_name}': {e}")
