@@ -8,12 +8,14 @@ set -e
 
 CITY=${1:-cairo}
 TOPIC=${2:-software}
-MONTHS=${3:-1}
-API_KEY=${4:-""}  # Optional
+COUNTRY=${3:-eg}
+MONTHS=${4:-1}
+API_KEY=${5:-""}  # Optional
 
 echo "🚀 Running AI Event Research CLI"
 echo "📍 City: $CITY"
 echo "📌 Topic: $TOPIC"
+echo "🌍 Country: $COUNTRY"
 echo "🗓️ Months: $MONTHS"
 if [ -n "$API_KEY" ]; then
     echo "🔑 Using provided API Key"
@@ -71,9 +73,9 @@ cd ./app || { echo "❌ 'app' directory not found!"; exit 1; }
 
 
 if [ -n "$API_KEY" ]; then
-    $PYTHON_CMD main.py --city="$CITY" --topic="$TOPIC" --months="$MONTHS" --key="$API_KEY"
+    $PYTHON_CMD main.py --city="$CITY" --topic="$TOPIC" --country="$COUNTRY" --months="$MONTHS" --key="$API_KEY"
 else
-    $PYTHON_CMD main.py --city="$CITY" --topic="$TOPIC" --months="$MONTHS"
+    $PYTHON_CMD main.py --city="$CITY" --topic="$TOPIC" --country="$COUNTRY" --months="$MONTHS"
 fi
 
 echo "✅ Done! Check the generated Excel file."
