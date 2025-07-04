@@ -8,7 +8,7 @@ Usage:
 Options:
   --city=<city>      Optional city name [default: cairo]. You can specify multiple cities separated by commas.
   --topic=<topic>    Required topic name(s) (e.g., software, market).
-  --months=<months>: Optional [default: 1]. Number of months to search for events starting from today. Minimum is 1, maximum is 4.
+  --months=<months>  Optional months name [default: 1]. Number of months to search for events starting from today. Minimum is 1, maximum is 4.
   --key=<key>        Optional  Firecrawl API key for web data extraction.
   -h --help          Show this help message.
 
