@@ -62,11 +62,11 @@ class ResearchAgent:
             city = state.city
             topics = state.topic
 
-            logger.info(f"📍 Location: {city} | 🔖 Topic: {topics}")
+            logger.info(f"📍 Location: {city} | 🔖 Topic: {topics} | 🗓️  Months: {self.months}")
 
             date_now = datetime.now()
             start_date = date_now.strftime("%Y-%m-%d")
-            end_date = (date_now + relativedelta(months=self.months)).strftime("%Y-%m-%d")
+            end_date = (date_now + relativedelta(months=int(self.months))).strftime("%Y-%m-%d")
 
             logger.info("🛠 Creating query prompt...")
             query = f"List upcoming {topics} events in {city} between {start_date} and {end_date}. Include name, description, location, date, and link."
