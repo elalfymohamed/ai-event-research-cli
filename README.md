@@ -1,4 +1,9 @@
 # 🧠 AI Event Research CLI
+<p align="center">
+<img width="982" height="472" alt="Image" src="https://github.com/user-attachments/assets/c4b91df7-4072-49e8-9f01-5a3f652d31ee" />
+</p>
+
+## 🔍 What is this?
 
 This CLI tool uses a local LLM model with LangGraph, LangChain, and Firecrawl to search, analyze, and extract structured information about upcoming events based on location and topic.
 
