@@ -15,12 +15,14 @@ class FirecrawlService:
        except Exception as e:
            ValueError(f"[FirecrawlService] Failed to initialize FirecrawlApp: {e}")
 
-    def search_events(self, query: str, city: str):
+    def search_events(self, query: str, city: str, country:str):
         try:
             result = self.app.search(
                 query=query,
                 location=city,
-                scrape_options=ScrapeOptions(formats=["markdown"])
+                scrape_options=ScrapeOptions(formats=["markdown"]),
+                limit=30,
+                country=country
             )
 
             return result
@@ -30,7 +32,7 @@ class FirecrawlService:
 
     def scrape_events_pages(self, url: str):
         try:
-            result = self.app.scrape_url( url,formats=["markdown"])
+            result = self.app.scrape_url(url,formats=["markdown"], block_ads=True)
 
             return result
         except Exception as e:
