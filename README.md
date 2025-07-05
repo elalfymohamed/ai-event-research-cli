@@ -3,7 +3,22 @@
 <img width="982" height="472" alt="Image" src="https://github.com/user-attachments/assets/c4b91df7-4072-49e8-9f01-5a3f652d31ee" />
 </p>
 
-## 🔍 What is this?
+## 🔍 What is this? - Find All Events in One Go
+A tool to get all events for a specific topic and city. Sometimes we need to search for tech events or any events, but we don't cover all events in the town because of no time or distractions. This tool solves the problem. Why? With just a few commands for the city and topic you need to research, that's it. The tool searches and gets all events in an Excel file.
+
+### 🚫 The Problem
+- Manual event searching takes too much time
+- We miss many events scattered across different websites
+- Distractions and limited time mean incomplete research
+- Events are on multiple platforms (Eventbrite, Meetup, venue sites, etc.)
+
+### ✅ The Solution
+Simple automation:
+- Enter city and topic
+- Tool searches automatically
+- All events saved to Excel file
+
+## 🛠️ Tech Stack
 
 This CLI tool uses a local LLM model with LangGraph, LangChain, and Firecrawl to search, analyze, and extract structured information about upcoming events based on location and topic.
 
