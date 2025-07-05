@@ -64,7 +64,7 @@ class ResearchAgent:
             logger.info(f"📍 Location: {city} | 🔖 Topic: {topics} | 🌍 Country: {self.country} | 🗓️ Months: {self.months}")
             logger.info("🛠 Creating query prompt...")
 
-            query = (f"List upcoming {topics} events in {city} between {self.start_date} and {self.end_date}")
+            query = f"{topics} events {city} {self.start_date} to {self.end_date} schedule calendar"
 
             logger.info(f"🛠 Query for date range: {self.start_date} to {self.end_date}")
             logger.info("🔎 Querying Firecrawl search...")
@@ -85,7 +85,6 @@ class ResearchAgent:
                     logger.warning("⚠️ Missing URL in search result, skipping.")
                     continue
 
-                logger.info("🔎 Research ...")
                 logger.info(f"🌐 Scraping: {url}")
                 scraped = self.firecrawl.scrape_events_pages(url)
                 if scraped:
