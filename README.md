@@ -94,8 +94,8 @@ You can run the tool with:
 ```bash
 chmod +x run_project.sh
 
-# Usage: ./run_project.sh <city> <topic> <months> [api_key]
-./run_project.sh cairo software 2 your_firecrawl_api_key
+# Usage: ./run_project.sh <city> <topic> <country> <months> [api_key]
+./run_project.sh cairo software eg 2 your_firecrawl_api_key
 
 ```
 
@@ -115,7 +115,7 @@ The application will automatically load the key if not explicitly provided via -
 The main.py script accepts several command-line arguments to customize your event search.
 
 ```bash
-main.py [--city=<city>] --topic=<topic> [--months=<months>] [--key=<API_KEY>]
+main.py [--city=<city>] --topic=<topic> [--country=<country>] [--months=<months>] [--key=<API_KEY>]
 
 Options:
 
@@ -123,16 +123,18 @@ Options:
         Default: cairo
         Example: --city=cairo
 
-    --months=<months>: Optional. Specify the number of months to search for events starting from the current date. Minimum is 1 month, maximum is 4 months.
-        Default: 1
-        Example: --months=2
-
     --topic=<topic>: Required. Define the target event topic (e.g., AI, Software, Cybersecurity).
-
         Example: --topic=software
 
-    --key=<API_KEY>: Optional. Provide your API key for Firecrawl. If not provided, the tool will attempt to use a key in .env file.
+    --country=<country> Optional. Specify a country code (e.g., eg, us). Only one country code allowed.
+        Default: eg
+        Example: --country=eg
 
+    --months=<months>: Optional. Specify the number of months to search for events starting from the current date. Minimum is 1 month, maximum is 4 months.
+         Default: 1
+         Example: --months=2
+
+    --key=<API_KEY>: Optional. Provide your API key for Firecrawl. If not provided, the tool will attempt to use a key in .env file.
         Example: --key=your_firecrawl_api_key_here
 
     -h, --help: Show this help message and exit.
