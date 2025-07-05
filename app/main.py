@@ -9,6 +9,7 @@ from config import setup_logger
 from agents.research_agent import ResearchAgent
 
 
+
 logger = setup_logger()
 
 def main():
@@ -17,16 +18,17 @@ def main():
         args = docopt(USAGE)
         validate_required_args(args)
 
-        topic = args.get("--topic")
-        city = args.get("--city")
+        topic = str(args.get("--topic"))
+        city = str(args.get("--city"))
         months = args.get("--months")
-        api_key = args.get("--key")
+        api_key = str(args.get("--key"))
+        country = str(args.get("--country"))
 
         if api_key:
             KeyStorage(api_key)
 
         logger.info("🚀 Starting research agent")
-        agent = ResearchAgent(months=months)
+        agent = ResearchAgent(months=int(months), country=country.lower())
         agent.run_research(topic=topic, city=city)
 
         print("🎯 Final Output")
@@ -40,8 +42,8 @@ def main():
 if __name__ == '__main__':
     """
     How to run:
-        Mac/Linux -> python main.py --city=cairo --topic=software --months=2
-        Windows   -> py main.py --city=cairo --topic=software --months=2
+        Mac/Linux -> python main.py --city=cairo --topic=software --country=eg --months=2
+        Windows   -> py main.py --city=cairo --topic=software --country=eg --months=2
 
     To get help, run:
         Mac/Linux -> python main.py -h
