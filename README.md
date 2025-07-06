@@ -4,7 +4,7 @@
 </p>
 
 ## 🔍 What is this?
-A tool to get all events for a specific topic and city. Sometimes we need to search for tech events or any events, but we don't cover all events in the town because of no time or distractions. This tool solves the problem. Why? With just a few commands for the city and topic you need to research, that's it. The tool searches and gets all events in an Excel file.
+It's a tool to get all events for a specific topics and city. Sometimes we want to search for tech events or any kind of events, but we don’t search for them because we’re busy or distracted. This tool solves the problem. Why? With just a few commands for the city and topic you need to research; that's it. The tool searches and gets all events in an Excel file.
 
 ### 🚫 The Problem
 - Manual event searching takes too much time
