@@ -1,9 +1,9 @@
-# 🧠 AI Event Research CLI
+# 🧠 AI Event Research CLI - Find All Events in One Go
 <p align="center">
 <img width="982" height="472" alt="Image" src="https://github.com/user-attachments/assets/c4b91df7-4072-49e8-9f01-5a3f652d31ee" />
 </p>
 
-## 🔍 What is this? - Find All Events in One Go
+## 🔍 What is this?
 A tool to get all events for a specific topic and city. Sometimes we need to search for tech events or any events, but we don't cover all events in the town because of no time or distractions. This tool solves the problem. Why? With just a few commands for the city and topic you need to research, that's it. The tool searches and gets all events in an Excel file.
 
 ### 🚫 The Problem
