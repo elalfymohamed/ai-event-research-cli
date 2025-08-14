@@ -6,8 +6,7 @@ import sys
 from cli import USAGE, validate_required_args
 from utilities import KeyStorage
 from config import setup_logger
-from agents.research_agent import ResearchAgent
-
+from agents import ResearchAgent
 
 
 logger = setup_logger()
