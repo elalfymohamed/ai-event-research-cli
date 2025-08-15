@@ -1,25 +1,16 @@
-# 🧠 AI Event Research CLI
+# 🧠 AI Event Research CLI - Find All Events in One Go
 <p align="center">
-<img width="982" height="472" alt="Image" src="https://github.com/user-attachments/assets/c4b91df7-4072-49e8-9f01-5a3f652d31ee" />
+<img width="982" height="472" alt="Image" src="https://github.com/user-attachments/assets/f3e491c2-8b3a-4131-8b87-bf83774f26f4" />
 </p>
 
 ## 🔍 What is this?
+It's a tool to get all events for a specific topics and city. Sometimes we want to search for tech events or any kind of events, but we don’t search for them because we’re busy or distracted. This tool solves the problem. Why? With just a few commands for the city and topic you need to research; that's it. The tool searches and gets all events in an Excel file.
+
+## 🛠️ Tech Stack
 
 This CLI tool uses a local LLM model with LangGraph, LangChain, and Firecrawl to search, analyze, and extract structured information about upcoming events based on location and topic.
 
-This project leverages ✨ **Ollama AI (Local LLM)** ✨ and ✨ **Firecrawl** ✨ to intelligently retrieve, summarize, and structure event information based on specific cities and topics — **entirely on your machine**, with no OpenAI or cloud LLM usage required.
-
----
-
-## 🌟 Overview
-
-The **AI Event Research CLI** is designed to streamline the process of finding and analyzing information about upcoming events. By combining the power of local Large Language Models (LLMs) with advanced web scraping and data extraction techniques, it provides a robust solution for:
-
-- Researchers
-- Event organizers
-- Anyone interested in staying informed about industry-specific events
-
----
+This project leverages **Ollama AI (Local LLM)** and **Firecrawl** to intelligently retrieve, summarize, and structure event information based on specific cities and topics — **entirely on your machine**, with no OpenAI or cloud LLM usage required.
 
 ## 📦 Features
 
@@ -49,10 +40,12 @@ cd ai-event-research-cli
 
 - Install <a href="https://ollama.com/" target="_blank" >Ollama</a>
 
-- Pull a model of your choice (e.g. llama3, mistral, gemma, etc.)
+- Pull a model of your choice (e.g. llama3, gpt-oss:20b, gpt-oss:120b, etc.)
 
 ```bash
 ollama run llama3
+# or
+ollama run gpt-oss:20b
 ```
 
 ## 🔑 How to Get a Firecrawl API Key
