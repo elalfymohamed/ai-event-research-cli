@@ -64,7 +64,7 @@ class ResearchAgent:
             logger.info(f"📍 Location: {city} | 🔖 Topic: {topics} | 🌍 Country: {self.country} | 🗓️ Months: {self.months}")
             logger.info("🛠 Creating query prompt...")
 
-            query = (f"List upcoming {topics} events in {city} between {self.start_date} and {self.end_date}")
+            query = f"{topics} events {city} {self.start_date} to {self.end_date} schedule calendar"
 
             logger.info(f"🛠 Query for date range: {self.start_date} to {self.end_date}")
             logger.info("🔎 Querying Firecrawl search...")
@@ -85,7 +85,6 @@ class ResearchAgent:
                     logger.warning("⚠️ Missing URL in search result, skipping.")
                     continue
 
-                logger.info("🔎 Research ...")
                 logger.info(f"🌐 Scraping: {url}")
                 scraped = self.firecrawl.scrape_events_pages(url)
                 if scraped:
@@ -111,7 +110,7 @@ class ResearchAgent:
 
         messages = [
             SystemMessage(
-                content=self.prompts.EVENT_ANALYSIS_SYSTEM(
+                content=self.prompts.event_analysis_system(
                     topic=topic, city=city, start_date=self.start_date, end_date=self.end_date
                 )
             ),
@@ -131,7 +130,7 @@ class ResearchAgent:
 
     def _analyze_research_results(self, state: ResearchState) -> Dict[str, Any]:
         """
-        Analyzes scraped web pages and extracts structured event data.
+           Analyzes scraped web pages and extracts structured event data using LLM.
         """
         try:
             logger.info("🧠 Starting LLM event analysis...")
@@ -147,27 +146,59 @@ class ResearchAgent:
                 events = self._analyze_events_content(content=content, source_url=url, city=state.city, topic=state.topic)
                 all_events.extend(events)
 
-            logger.info(f"✅ Extracted {len(all_events)} events.")
-            return {"events": all_events, "search_results": []}
+
+            json_events = convert_flat_data_to_json(all_events)
+
+            logger.info(f"✅ Extracted {len(json_events)} events from search results.")
+
+
+            return {"events": json_events, "search_results": []}
 
         except Exception as e:
             logger.error(f"❌ Error analyzing scraped pages: {str(e)}")
+            return {"events": [], "search_results": []}
+
+    def _filter_events(self, state: ResearchState) -> Dict[str, Any]:
+        """
+           Filters events in state that start on or after self.start_date.
+           Assumes each event is a dictionary with a 'start_date' key.
+        """
+        logger.info("🚦 Starting event filtering and conversion...")
+
+        try:
+            filtered_events = [
+                event for event in state.events
+                if event['start_date'] >= self.start_date
+            ]
+
+            logger.info(f"✅ Extracted {len(filtered_events)} events.")
+            return {"events": filtered_events}
+
+        except Exception as e:
+            logger.error(f"❌ Failed to convert and filter events: {e}")
             return {"events": []}
 
-    def _build_graph(self):
-        """
-        Builds the LangGraph execution flow for event research.
-        """
-        graph = StateGraph(ResearchState)
-        graph.add_node("research", self._research_node)
-        graph.add_node("analyze", self._analyze_research_results)
-        graph.set_entry_point("research")
-        graph.add_edge("research", "analyze")
-        graph.add_edge("analyze", END)
 
-        compiled_graph = graph.compile()
-        logger.info("✅ Research graph compiled successfully")
-        return compiled_graph
+    def _build_graph(self):
+       """
+       Builds the LangGraph execution flow for event research.
+       """
+       graph = StateGraph(ResearchState)
+
+       graph.add_node("research", self._research_node)
+       graph.add_node("analyze", self._analyze_research_results)
+       graph.add_node("filtered", self._filter_events)
+
+       graph.set_entry_point("research")
+       graph.add_edge("research", "analyze")
+       graph.add_edge("analyze", "filtered")
+       graph.add_edge("filtered", END)
+
+       compiled_graph = graph.compile()
+       logger.info("✅ Research graph compiled successfully.")
+
+       return compiled_graph
+
 
     def run_research(self, topic: str, city: str):
         """
@@ -179,9 +210,7 @@ class ResearchAgent:
             final_output = result.get("events") or result
             urls_output = result.get("urls")
 
-            json_output = convert_flat_data_to_json(final_output)
-
-            Output(input={"topic": topic}, output=json_output, urls=urls_output)
+            Output(input={"topic": topic}, output=final_output, urls=urls_output)
 
         except Exception as e:
             raise ValueError(f"❌ Error during research execution: {str(e)}")
