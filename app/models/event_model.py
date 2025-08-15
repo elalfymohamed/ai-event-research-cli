@@ -9,28 +9,28 @@ class LocationDetails(BaseModel):
     country: Optional[str] = None
 
 class Organizer(BaseModel):
-    name: str
+    name:  Optional[str] = None
     website: Optional[str] = None
     contactEmail: Optional[str] = None
 
 class EventInfo(BaseModel):
     event_name: str
     event_type: str
-    date_start: str
-    date_end: str
-    time: str
-    location_type: str
+    start_date: str
+    end_date: str
+    time: Optional[str] = None
+    location_type: Optional[str] = None
     location_details: LocationDetails
     online_link: Optional[str] = None
-    description: str
-    target_audience: str
-    registration_status: str
+    description: Optional[str] = None
+    target_audience: Optional[str] = None
+    registration_status: Optional[str] = None
     organizer: Organizer
     source_url: HttpUrl
 
 class ResearchState(BaseModel):
     city: str
     topic: str
-    events: List[EventInfo] = []
+    events: List[Dict[str, Any]]  = []
     search_results: List[Dict[str, Any]] = []
-    urls:  List[str] = []
+    urls:  List[HttpUrl] = []
