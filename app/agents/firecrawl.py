@@ -2,6 +2,10 @@
 from firecrawl import FirecrawlApp, ScrapeOptions
 # Local imports
 from utilities import load_api_key
+from models import ResultFirecrawl
+from config import setup_logger
+
+logger = setup_logger()
 
 class FirecrawlService:
     def __init__(self):
@@ -15,7 +19,10 @@ class FirecrawlService:
        except Exception as e:
            ValueError(f"[FirecrawlService] Failed to initialize FirecrawlApp: {e}")
 
-    def search_events(self, query: str, city: str, country:str):
+    def search_events(self, query: str, city: str, country: str) -> ResultFirecrawl:
+        """
+        Searches for events using the Firecrawl app based on query and location.
+        """
         try:
             result = self.app.search(
                 query=query,
@@ -24,11 +31,11 @@ class FirecrawlService:
                 limit=30,
                 country=country
             )
-
             return result
+
         except Exception as e:
-            print(f"[FirecrawlService] Error during event search: {e}")
-            return []
+            logger.error(f"[FirecrawlService] Error during event search: {e}")
+            return ResultFirecrawl(data=[])
 
     def scrape_events_pages(self, url: str):
         try:
@@ -36,5 +43,5 @@ class FirecrawlService:
 
             return result
         except Exception as e:
-            print(f"[FirecrawlService] Error scraping URL '{url}': {e}")
+            logger.error(f"[FirecrawlService] Error scraping URL '{url}': {e}")
             return None
