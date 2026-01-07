@@ -40,12 +40,12 @@ cd ai-event-research-cli
 
 - Install <a href="https://ollama.com/" target="_blank" >Ollama</a>
 
-- Pull a model of your choice (e.g. llama3, gpt-oss:20b, gpt-oss:120b, etc.)
+- Pull a model of your choice.
 
 ```bash
 ollama run llama3
 # or
-ollama run gpt-oss:20b
+ollama # Model name
 ```
 
 ## How to Get a Firecrawl API Key
@@ -56,17 +56,17 @@ ollama run gpt-oss:20b
 
 ## Install Dependencies
 
-Next, install all the necessary Python packages using pip:
+Next, install all the necessary Python packages using uv:
 
 ```bash
-python3 -m venv .venv
+uv venv
 
 #Linux / macOS:
 source .venv/bin/activate
 #Windows:
 .venv/Scripts/activate
 
-pip install -r requirements.txt
+uv sync
 ```
 
 ### 3. Run the CLI Tool
