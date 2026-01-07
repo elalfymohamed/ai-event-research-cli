@@ -1,29 +1,29 @@
-# 🧠 AI Event Research CLI - Find All Events in One Go
+# AI Event Research CLI - Find All Events in One Go
 <p align="center">
 <img width="982" height="472" alt="Image" src="https://github.com/user-attachments/assets/f3e491c2-8b3a-4131-8b87-bf83774f26f4" />
 </p>
 
-## 🔍 What is this?
+## What is this?
 It's a tool to get all events for a specific topics and city. Sometimes we want to search for tech events or any kind of events, but we don’t search for them because we’re busy or distracted. This tool solves the problem. Why? With just a few commands for the city and topic you need to research; that's it. The tool searches and gets all events in an Excel file.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 This CLI tool uses a local LLM model with LangGraph, LangChain, and Firecrawl to search, analyze, and extract structured information about upcoming events based on location and topic.
 
 This project leverages **Ollama AI (Local LLM)** and **Firecrawl** to intelligently retrieve, summarize, and structure event information based on specific cities and topics — **entirely on your machine**, with no OpenAI or cloud LLM usage required.
 
-## 📦 Features
+## Features
 
-- 🔍 **Event Querying**: Search for upcoming conferences, webinars, and expos based on location and topic.
-- 🌐 **Web Scraping with Firecrawl**: Uses Firecrawl to scrape relevant event web pages.
-- 🧠 **LLM-Powered Analysis**: Utilizes Ollama + LangChain to analyze and extract event data.
-- 📊 **Structured Data Extraction**: Pydantic models ensure reliable and consistent formatting.
-- 📈 **Excel Export**: Automatically exports final results to Excel.
-- 🔐 **Secure API Key Storage**: Manage your Firecrawl API key securely.
+-  **Event Querying**: Search for upcoming conferences, webinars, and expos based on location and topic.
+-  **Web Scraping with Firecrawl**: Uses Firecrawl to scrape relevant event web pages.
+-  **LLM-Powered Analysis**: Utilizes Ollama + LangChain to analyze and extract event data.
+-  **Structured Data Extraction**: Pydantic models ensure reliable and consistent formatting.
+-  **Excel Export**: Automatically exports final results to Excel.
+-  **Secure API Key Storage**: Manage your Firecrawl API key securely.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
@@ -32,11 +32,11 @@ git clone https://github.com/elalfymohamed/ai-event-research-cli.git
 cd ai-event-research-cli
 ```
 
-## 🧠 Using Ollama Locally
+## Using Ollama Locally
 
 - This project relies on <a href="https://ollama.com/" target="_blank">Ollama</a> to run LLMs locally.
 
-### ✅ Requirements
+### Requirements
 
 - Install <a href="https://ollama.com/" target="_blank" >Ollama</a>
 
@@ -48,7 +48,7 @@ ollama run llama3
 ollama run gpt-oss:20b
 ```
 
-## 🔑 How to Get a Firecrawl API Key
+## How to Get a Firecrawl API Key
 
 1. Visit: <https://www.firecrawl.dev/app>
 2. Sign in and create an API key
@@ -85,7 +85,7 @@ py main.py --city=cairo --topic=software
 
 ```
 
-## 🏃‍♂️ Run via Bash Script
+## Run via Bash Script
 
 You can run the tool with:
 
@@ -97,7 +97,7 @@ chmod +x run_project.sh
 
 ```
 
-### 🔐 Using Environment Variables
+### Using Environment Variables
 
 To avoid passing your API key on the command line, create a `.env` file in the project root:
 
@@ -108,7 +108,7 @@ FIRECRAWL_API_KEY=your_api_key_here
 
 The application will automatically load the key if not explicitly provided via --key.
 
-## ⚙️ CLI Usage
+## CLI Usage
 
 The main.py script accepts several command-line arguments to customize your event search.
 
@@ -139,6 +139,6 @@ Options:
 
 ```
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! If you have suggestions for improvements, new features, or bug fixes, please feel free to open an issue or submit a pull request.
