@@ -47,7 +47,7 @@ dependencies = [
     "pydantic==2.12.5",
     "pydantic-core==2.41.5",
     "pygments==2.19.2",
-    "pytest==8.4.1",
+    "pytest==9.0.2",
     "python-calamine==0.6.1",
     "python-dateutil==2.9.0.post0",
     "python-dotenv==1.1.1",
@@ -69,4 +69,10 @@ dependencies = [
     "xxhash==3.5.0",
     "yarl==1.20.1",
     "zstandard==0.23.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+  "flake8",
+  "pytest"
 ]
